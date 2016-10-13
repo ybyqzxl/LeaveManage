@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 开启使用开发模式，详细错误提示 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 将对象交给spring管理 -->
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<!-- 指定资源编码类型 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定每次请求到达，重新加载资源文件 -->
+	<constant name="struts.i18n.reload" value="false" />
+	<!-- 指定每次配置文件更改后，自动重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="false" />
+	<constant name="struts.action.extension" value="do,action,jhtml,," />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<package name="default" namespace="/" extends="struts-default">
+		<!--Example <action name="DesktopLoginAction" class="DesktopLoginAction"> 
+			<result name="success" type="redirect">DesktopAction.action</result> <result 
+			name="error" type="redirect">/error/login_error.html</result> </action> -->
+
+	</package>
+	<package name="ajax" namespace="/ajax" extends="json-default">
+		<!--Example <action name="KeepOnlineAction" class="KeepOnlineAction"> <result 
+			name="need_login" type="json" /> <result name="on_line" type="json" /> <result 
+			name="off_line" type="redirect">/index.html</result> </action> -->
+
+		<action name="PublishLeaveInfosAction" class="PublishLeaveInfosAction">
+			<result name="success" type="json" />
+			<result name="REQ_PARAMS_ERR" type="json" />
+		</action>
+		<action name="LoadMyLeaveInfo" class="LoadMyLeaveInfo">
+			<result name="success" type="json" />
+			<result name="REQ_PARAMS_ERR" type="json" />
+		</action>
+		<action name="LoadApprovalLeaveInfo" class="LoadApprovalLeaveInfo">
+			<result name="success" type="json" />
+			<result name="REQ_PARAMS_ERR" type="json" />
+		</action>
+		<action name="ModifyApproval" class="ModifyApproval">
+			<result name="success" type="json" />
+			<result name="REQ_PARAMS_ERR" type="json" />
+		</action>
+	</package>
+</struts>
